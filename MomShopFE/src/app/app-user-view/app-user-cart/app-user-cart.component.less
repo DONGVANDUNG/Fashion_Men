@@ -127,6 +127,7 @@
     align-items: center;
     border-bottom: 1px solid #dddddd;
     width: 100%;
+    position: relative;
 }
 .brand-text {
     width: 17%;
@@ -226,6 +227,41 @@
     align-items: center;
 }
 .process{
-    width: 60%;
-    background-color: red;
+    width: 48%;
+//    background-color: red;
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+}
+.block-order,.block-cart,.block-success{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.status-product{
+    background-color: #000;
+    height: 27px;
+    width: 27px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.line-step{
+    border: 1px solid #212529;
+    position: absolute;
+    height: 1px;
+    top:30%;
+    width: 35%;
+    z-index: -1;
+}
+.section-cart{
+    max-width: 870px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+.text-secondary,.text-link-cart{
+    cursor: pointer;
 }

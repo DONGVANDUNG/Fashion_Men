@@ -32,6 +32,7 @@ import { AppAdminManagementOrdertModule } from "./app/app-admin-view/app-admin-m
 import { DashboardModule } from "./app/app-admin-view/dashboard/dashboard.component.module";
 import { SidebarModule } from 'primeng/sidebar';
 import {CarouselModule} from 'primeng/carousel';
+import { StepsModule } from 'primeng/steps';
 @NgModule({
   declarations: [AppAdminMenuComponent],
   imports: [
@@ -60,7 +61,7 @@ import {CarouselModule} from 'primeng/carousel';
     TagModule,
     RatingModule,
     PaginatorModule,
-    RadioButtonModule
+    RadioButtonModule,
   ],
   exports: [AppAdminMenuComponent,
     CardModule,
@@ -74,6 +75,7 @@ import {CarouselModule} from 'primeng/carousel';
     AppUserOrderModule,
     SidebarModule,
     CarouselModule,
+    StepsModule,
     RadioButtonModule],
 
 }) 
