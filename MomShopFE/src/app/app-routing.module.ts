@@ -4,7 +4,6 @@ import { AppAdminFeedbackUserComponent } from './app-admin-view/app-admin-feedba
 import { AppAdminManagementProductComponent } from './app-admin-view/app-admin-management-product/app-admin-management-product.component';
 import { AppAdminMangementCustomerComponent } from './app-admin-view/app-admin-mangement-customer/app-admin-mangement-customer.component';
 import { AppAdminManagementImportProductComponent } from './app-admin-view/app-admin-management-import-product/app-admin-management-import-product.component';
-import { AppUserMainComponent } from './app-user-view/app-user-main/app-user-main.component';
 import { AdminManagementCollectionComponent } from './app-admin-view/admin-management-collection/admin-management-collection.component';
 import { AppUserCartComponent } from './app-user-view/app-user-cart/app-user-cart.component';
 import { LoginComponent } from './app-login/login/login.component';
@@ -68,11 +67,10 @@ const routes: Routes = [
   { path: 'admin/dashboard', component: DashboardComponent},
 
   { path: 'home', component: AppUserHomeComponent},
- // { path: 'cart', component: AppUserCartComponent},
+  { path: 'cart', component: AppUserCartComponent},
   { path: 'register', component: AppUserRegisterComponent},
   { path: 'admin', component: AppAdminMenuComponent},
   { path: 'general-trading-terms', component: GeneralTradingTermsComponent},
-  { path: 'view', component: AppUserMainComponent },
   { path: 'collection', component: UserCollectionComponent },
   { path: 'collection-detail', component: UserCollectionDetailComponent },
   { path: 'cart', component: CartComponent },

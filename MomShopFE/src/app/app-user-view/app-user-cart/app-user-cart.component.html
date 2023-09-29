@@ -1,49 +1,80 @@
-<!-- <app-header></app-header> -->
-<div class="mb-5">
-    <p *ngIf="!cart" class="title-cart-empty text-center mt-5">GIỎ HÀNG CỦA BẠN ĐANG TRỐNG</p>
-     <div *ngIf="!cart" class="cart">
-        <img style="width: 250px;" src="https://file.hstatic.net/1000351433/file/empty-cart_924e850940534647bace4fd790c132cf.svg">
-     </div>
-     <div class="container">
-          <h3 class="title-cart float-end font-bold">GIỎ HÀNG</h3>
-     </div>
-     <div class="detail-cart container mt-4">
-        <div class="list-detail-product">
-            <table>
-                <tr class="header-table">
-                    <th style="width:60%;padding-left:100px">SẢN PHẨM</th>
-                    <th style="width:20%">SỐ LƯỢNG</th>
-                    <th style="width:20%;text-align: center;">GIÁ</th>
-                </tr>
-                <tr>
-                    <td class="d-flex justify-content-center align-items-center">
-                        <img class="image-product" src="assets/cat-1045782__340.jpg" width="100" height="100"/>
-                        <p class="size-product">Bad OPS VEST Size M</p>
-                    </td>
-                    <td >
-                        <div class="quantity-product">
-                            <i class="fa-solid fa-plus" (click)="addQuantityProduct()"></i>
-                            <p class="text-quantity">1</p>
-                            <i class="fa-solid fa-minus" (click)="minusQuantityProduct()"></i>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="block-price">
-                            <p class="text-price">543534</p>
-                            <i class="fa-solid fa-trash" (click)="deleteProduct()"></i>
-                        </div>
-                    </td>
-                </tr>
-                    <hr class="line-sperate">
-            </table>
-        </div>
-        <div class="payment">
-            <h3 class="title-payment">TỔNG HOÁ ĐƠN</h3>
-            <h3 class="price-total mb-5">760000.0000000</h3>
-             <button type="button" class="button mb-5">THANH TOÁN</button>
-             <button type="button" (click)="backHome()" class="button keep-shopping">TIẾP TỤC MUA SẮM</button>
-        </div>
-     </div>
+<div class="header">
+    <div class="header_top__right" (mouseover)="openBlockAuth()">
+        <i class="fa-solid fa-phone icon-phone"></i>
+        <a class="text-phone" href="#">1800 6226</a>
+        <span class="line-header"></span>
+        <p class="text-login">Đăng nhập</p>
+        <i class="fa-regular fa-user"></i>
+    </div>
+    <div class="block-user-auth" *ngIf="isToggleAuth" (mouseleave)="closeBlockAuth()">
+        <a class="item-auth" (click)="sidebarLoginVisible = true" >Đăng nhập</a>
+        <a class="item-auth" (click)="sidebarRegisterVisible = true">Đăng ký</a>
+        <a class="item-auth">Ưu đãi hội viên</a>
+    </div>
 </div>
-
-<!-- <app-footer></app-footer> -->
+<div class="sidebar-login">
+    <p-sidebar [(visible)]="sidebarLoginVisible" position="right">
+        <div class="block-login">
+            <h3>Đăng nhập</h3>
+            <input type="text" class="input-phone" placeholder="Nhập số điện thoại">
+            <!-- <span class="validate-error"></span> -->
+            <button class="button-login">ĐĂNG NHẬP</button>
+            <div class="btn-login-group">
+                <div class="btn-login-google">
+                    <img class="login-social" src="assets/layout/images/image-login-google.svg" alt="">
+                    <span>Google</span>
+                </div>
+                <div class="btn-login-facebook">
+                    <img class="login-social" src="assets/layout/images/image-login-facebook.svg" alt="">
+                    <span>Facebook</span>
+                </div>
+            </div>
+            <p style="color: gray;">Hoặc đăng nhập bằng</p>
+            <p>Bạn chưa có tài khoản? <a (click)="sidebarRegisterVisible = true" (click)="sidebarLoginVisible = false" class="text-primary text-decoration-none text-link">Đăng ký</a></p>
+        </div>
+    </p-sidebar>
+</div>
+<div class="sidebar-register">
+    <p-sidebar [(visible)]="sidebarRegisterVisible" position="right">
+            <div class="block-register">
+                <h3>ĐĂNG KÝ TÀI KHOẢN</h3>
+                <input type="text" class="input-name" placeholder="Họ và tên*">
+                <input type="text" class="input-phone" placeholder="Số điện thoại*">
+                <input type="text" class="input-email" placeholder="Nhập email để nhận ưu đãi">
+                <!-- <span class="validate-error"></span> -->
+                <button class="button-login">Đăng ký</button>
+                <p>Chọn Đăng ký để xác nhận rằng quý khách đã đọc Chính sách bảo mật và chia sẻ thông tin của Fashion Men</p>
+                <div class="btn-login-group">
+                    <div class="btn-login-google">
+                        <img class="login-social" src="assets/layout/images/image-login-google.svg" alt="">
+                        <span>Google</span>
+                    </div>
+                    <div class="btn-login-facebook">
+                        <img class="login-social" src="assets/layout/images/image-login-facebook.svg" alt="">
+                        <span>Facebook</span>
+                    </div>
+                </div>
+                <p style="color: gray;">Hoặc đăng nhập bằng</p>
+                <p>Bạn đã có tài khoản? <a (click)="sidebarLoginVisible = true" (click)="sidebarRegisterVisible = false" class="text-link text-primary text-decoration-none">Đăng nhập</a></p>
+            </div>
+    </p-sidebar>
+</div>
+<div class="nav-bar-header">
+    <div class="brand-text">
+        <span>FASHION MEN</span>
+    </div>
+   <div class="progress-product">
+    <div class="process">
+        <div class="block-cart">
+            <div class="status-product"></div>
+        </div>
+        <div class="block-order">
+            <div class="status-product"></div>
+        </div>
+        <div class="block-success">
+            <div class="status-product"></div>
+        </div>
+    </div>
+    <hr>
+   </div>
+</div>

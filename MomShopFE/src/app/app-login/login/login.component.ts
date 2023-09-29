@@ -72,13 +72,13 @@ export class LoginComponent {
   //   this.register.emit(null);
   // } 
   ngOnInit(): void {
-   const observable = new Observable((obser)=>{
-    setTimeout(()=>{
-      obser.next('Hello, this is message from Observable!'),12000
-    })
-   });
-   observable.subscribe((data)=>{
-    this.message = data;
-   })
+  //  const observable = new Observable((obser)=>{
+  //   setTimeout(()=>{
+  //     obser.next('Hello, this is message from Observable!'),12000
+  //   })
+  //  });
+  //  observable.subscribe((data)=>{
+  //   this.message = data;
+  //  })
   }
 }

@@ -1,53 +1,260 @@
-<header id="header" class="">
-    <div class="header-top-bar" style="display: flex; flex-direction: row;height: 100px;">
-        <div class="header-main--left" style="max-width: 40%;width: fit-content;height: fit-content;">
-            <div class="header-logo" routerLink="login" routerLinkActive="active">
-                <a href="/view">
-                    <img itemprop="logo" src="//theme.hstatic.net/1000351433/1000915382/14/logo.png?v=237"
-                        alt="Bad Habits Official Store" style="max-width: 80%;" />
-                </a>
-            </div>
+<section id="header">
+    <div class="header">
+        <div class="header_top__right" (mouseover)="openBlockAuth()">
+            <i class="fa-solid fa-phone icon-phone"></i>
+            <a class="text-phone" href="#">1800 6226</a>
+            <span class="line-header"></span>
+            <p class="text-login">Đăng nhập</p>
+            <i class="fa-regular fa-user"></i>
         </div>
-        <div class="header-main--mid" style="max-width: 20%;">
-            <a href="/view"><img
-                    src="https://file.hstatic.net/1000351433/file/240x100_3ad6fedc038f4e13aba55fc46e785e19.png"
-                    alt="123" /></a>
+        <div class="block-user-auth" *ngIf="isToggleAuth" (mouseleave)="closeBlockAuth()">
+            <a class="item-auth" (click)="sidebarLoginVisible = true" >Đăng nhập</a>
+            <a class="item-auth" (click)="sidebarRegisterVisible = true">Đăng ký</a>
+            <a class="item-auth">Ưu đãi hội viên</a>
         </div>
-        <div class="header-main--right"
-            style="width: 100%;height: 100%;; display:flex; flex-direction: row;justify-content:space-around;">
-            <div style="display: inline;margin-top: 28px;">
-                <a href="/collection"><img
-                        src="https://file.hstatic.net/1000351433/file/loupe_9fd2a24ed9504b0c8d8fe6efb6654501.png"
-                        width="40" height="40" /></a>
+    </div>
+    <div class="sidebar-login">
+        <p-sidebar [(visible)]="sidebarLoginVisible" position="right">
+            <div class="block-login">
+                <h3>Đăng nhập</h3>
+                <input type="text" class="input-phone" placeholder="Nhập số điện thoại">
+                <!-- <span class="validate-error"></span> -->
+                <button class="button-login">ĐĂNG NHẬP</button>
+                <div class="btn-login-group">
+                    <div class="btn-login-google">
+                        <img class="login-social" src="assets/layout/images/image-login-google.svg" alt="">
+                        <span>Google</span>
+                    </div>
+                    <div class="btn-login-facebook">
+                        <img class="login-social" src="assets/layout/images/image-login-facebook.svg" alt="">
+                        <span>Facebook</span>
+                    </div>
+                </div>
+                <p style="color: gray;">Hoặc đăng nhập bằng</p>
+                <p>Bạn chưa có tài khoản? <a (click)="sidebarRegisterVisible = true" (click)="sidebarLoginVisible = false" class="text-primary text-decoration-none text-link">Đăng ký</a></p>
             </div>
-            <div style="display: inline;margin-top: 28px;" (click)="routerToCart()">
-                <a href="/cart"><img
-                        src="https://file.hstatic.net/1000351433/file/shopping-cart_b425b78c185941d88a1a7ec5e3da7484.png"
-                        width="40" height="40" /></a>
-                <!-- <a href="/cart"><span class="count-holder">
-                    <span class="count">0</span>
-                </span> </a> -->
-            </div>
-            <div style="display: inline;margin-top: 28px;" class="user-option">
-                <a><img
-                        src="https://file.hstatic.net/1000351433/file/user_bfb942d5edb24fc895104e6524135e07.png"
-                        width="40" height="40" /><span *ngIf="isAccount" class="text-danger" style="font-weight: bold;margin-left: 8px;">{{accountUser.fullName}}</span></a>
-                        <div class="block-option">
-                            <ul class="list-option">
-                                <li class="list-unstyled" *ngIf="isAccount"><a class="item-option" href="/profile">Tài khoản của tôi</a></li>
-                                <li class="list-unstyled" *ngIf="isAccount"><a class="item-option" href="/order">Đơn hàng</a></li>
-                                <li class="list-unstyled" *ngIf="!isAccount"><a class="item-option" href="/login">Đăng nhập</a></li>
-                                <li class="list-unstyled" *ngIf="!isAccount"><a class="item-option" href="/register">Đăng ký</a></li>
-                                <li class="list-unstyled" *ngIf="isAccount"><a class="item-option" (click)="logout()">Đăng xuất</a></li>
-                            </ul>
+        </p-sidebar>
+    </div>
+    <div class="sidebar-register">
+        <p-sidebar [(visible)]="sidebarRegisterVisible" position="right">
+                <div class="block-register">
+                    <h3>ĐĂNG KÝ TÀI KHOẢN</h3>
+                    <input type="text" class="input-name" placeholder="Họ và tên*">
+                    <input type="text" class="input-phone" placeholder="Số điện thoại*">
+                    <input type="text" class="input-email" placeholder="Nhập email để nhận ưu đãi">
+                    <!-- <span class="validate-error"></span> -->
+                    <button class="button-login">Đăng ký</button>
+                    <p>Chọn Đăng ký để xác nhận rằng quý khách đã đọc Chính sách bảo mật và chia sẻ thông tin của Fashion Men</p>
+                    <div class="btn-login-group">
+                        <div class="btn-login-google">
+                            <img class="login-social" src="assets/layout/images/image-login-google.svg" alt="">
+                            <span>Google</span>
                         </div>
+                        <div class="btn-login-facebook">
+                            <img class="login-social" src="assets/layout/images/image-login-facebook.svg" alt="">
+                            <span>Facebook</span>
+                        </div>
+                    </div>
+                    <p style="color: gray;">Hoặc đăng nhập bằng</p>
+                    <p>Bạn đã có tài khoản? <a (click)="sidebarLoginVisible = true" (click)="sidebarRegisterVisible = false" class="text-link text-primary text-decoration-none">Đăng nhập</a></p>
+                </div>
+        </p-sidebar>
+    </div>
+    <div class="nav-bar-header">
+        <div class="brand-text">
+            <p>FASHION MEN</p>
+        </div>
+        <div class="list-item-navbar">
+            <ul class="list-item">
+              <li class="item-nav" (mouseover)="openMenu(1)">THƯƠNG HIỆU</li>
+              <li class="item-nav" (mouseover)="openMenu(2)">SẢN PHẨM</li>
+              <li class="item-nav" (mouseover)="openMenu(3)">PHỤ KIỆN</li>
+              <li class="item-nav" (mouseover)="openMenu(4)">BỘ SƯU TẬP</li>
+              <li class="item-nav" (mouseover)="openMenu(5)">CỬA HÀNG</li>
+              <li class="item-nav" (mouseover)="openMenu(6)">OUTLET STORE</li>
+            </ul>
+            <input class="search" type="text" placeholder="Tìm kiếm" (click)="isVisiableBlockSearch = true">
+            <i class="fa-solid fa-magnifying-glass icon-search-nav"></i>
+            <i class="fa-regular fa-heart icon-heart"></i>
+            <i class="fa-solid fa-cart-shopping icon-cart"></i>
+            <p class="quantiy-favourite">3</p>
+            <div class="quantity-cart">4</div>
+        </div>
+        <div class="list-nav-menu-brand" *ngIf="isToggleBrand" (mouseleave)="closeMenu(1)">
+            <p-slideMenu #menuBrand [model]="listItemNavBrand" [popup]="false" [viewportHeight]="250" [menuWidth]="175"
+            ></p-slideMenu>
+        </div>
+        <div class="list-nav-menu-product" *ngIf="isToggleProduct" (mouseleave)="closeMenu(2)">
+            <div class="list-nav-block-product">
+                <div class="image-banner-subnav"></div> 
+                <div class="nav-product-item">
+                    <p class="header-sub-nav">Áo</p>
+                    <a href="" class="items-subnav-product">Áo sơ mi</a>
+                    <a href="" class="items-subnav-product">Áo polo</a>
+                    <a href="" class="items-subnav-product">Áo T-Shirt</a>
+                    <a href="" class="items-subnav-product">Áo Tank-top</a>
+                    <a href="" class="items-subnav-product">Áo Balzer</a>
+                    <a href="" class="items-subnav-product">Áo Khoác</a>
+                    <a href="" class="items-subnav-product">Áo Len</a>
+                    <a href="" class="items-subnav-product">Áo Nỉ Name</a>
+                    <a href="" class="items-subnav-product">Áo Thun Dài Tay</a>
+                    <a href="" class="items-subnav-product">Áo Dài Cách Tân</a>
+                </div>
+                <div class="nav-product-item">
+                    <p class="header-sub-nav">Quần</p>
+                    <a href="" class="items-subnav-product">Quần Âu</a>
+                    <a href="" class="items-subnav-product">Quần Kaki</a>
+                    <a href="" class="items-subnav-product">Quần Short</a>
+                    <a href="" class="items-subnav-product">Quần Thể Thao</a>
+                </div>
+                <div class="nav-product-item">
+                    <p class="header-sub-nav">Đồ lót</p>
+                    <a href="" class="items-subnav-product">Boxer</a>
+                    <a href="" class="items-subnav-product">Brief</a>
+                </div>
+                <div class="nav-product-item">
+                    <p class="header-sub-nav">Đồ bộ</p>
+                    <a href="" class="items-subnav-product">Bộ Suit</a>
+                    <a href="" class="items-subnav-product">Bộ đồ</a>
+                </div>
+                <div class="nav-product-item">
+                    <p class="header-sub-nav">Fashion Men B</p>
+                    <a href="" class="items-subnav-product">Áo sơ mi</a>
+                    <a href="" class="items-subnav-product">Áo polo</a>
+                    <a href="" class="items-subnav-product">Quần Âu</a>
+                    <a href="" class="items-subnav-product">Quần Kaki</a>
+                    <a href="" class="items-subnav-product">Bộ Suit</a>
+                    <a href="" class="items-subnav-product">Phụ kiện</a>
+                </div>
+            </div>
+        </div>
+        <div class="list-nav-menu-accessory" *ngIf="isToggleAccessory" (mouseleave)="closeMenu(3)">
+            <p-slideMenu #menuAccessory [model]="listItemNavAccessory" [popup]="false" [viewportHeight]="250" [menuWidth]="175"
+            ></p-slideMenu>
+        </div>
+        <div class="list-nav-menu-collection"  *ngIf="isToggleCollection" (mouseleave)="closeMenu(4)">
+            <div class="list-nav-block-collection">
+                <div class="image-banner-subnav-collection"></div> 
+                <div class="nav-collection-item">
+                    <p class="header-sub-nav">THU ĐÔNG 2023</p>
+                    <a href="" class="items-subnav-collection">Áo sơ mi</a>
+                    <a href="" class="items-subnav-collection">Áo polo</a>
+                    <a href="" class="items-subnav-collection">Áo T-Shirt</a>
+                    <a href="" class="items-subnav-collection">Áo Tank-top</a>
+                    <a href="" class="items-subnav-collection">Áo Balzer</a>
+                    <a href="" class="items-subnav-collection">Áo Khoác</a>
+                    <a href="" class="items-subnav-collection">Áo Len</a>
+                    <a href="" class="items-subnav-collection">Áo Nỉ Name</a>
+                    <a href="" class="items-subnav-collection">Áo Thun Dài Tay</a>
+                    <a href="" class="items-subnav-collection">Áo Dài Cách Tân</a>
+                </div>
+                <div class="nav-collection-item">
+                    <p class="header-sub-nav">XUÂN HÈ 2023</p>
+                    <a href="" class="items-subnav-collection">Quần Âu</a>
+                    <a href="" class="items-subnav-collection">Quần Kaki</a>
+                    <a href="" class="items-subnav-collection">Quần Short</a>
+                    <a href="" class="items-subnav-collection">Quần Thể Thao</a>
+                </div>
+                <div class="nav-collection-item">
+                    <p class="header-sub-nav">XUÂN HÈ 2022</p>
+                    <a href="" class="items-subnav-collection">Boxer</a>
+                    <a href="" class="items-subnav-collection">Brief</a>
+                </div>
+                <div class="nav-collection-item">
+                    <p class="header-sub-nav text-left">THU ĐÔNG 2023</p>
+                    <a href="" class="items-subnav-collection">Bộ Suit</a>
+                    <a href="" class="items-subnav-collection">Bộ đồ</a>
+                </div>
+                <div class="nav-collection-item">
+                    <p class="header-sub-nav">HÀNG CAO CẤP</p>
+                    <a href="" class="items-subnav-collection">Áo sơ mi</a>
+                    <a href="" class="items-subnav-collection">Áo polo</a>
+                    <a href="" class="items-subnav-collection">Quần Âu</a>
+                    <a href="" class="items-subnav-collection">Quần Kaki</a>
+                    <a href="" class="items-subnav-collection">Bộ Suit</a>
+                    <a href="" class="items-subnav-collection">Phụ kiện</a>
+                </div>
+            </div>
+        </div>
+        <div class="list-nav-menu-shop" *ngIf="isToggleShop" (mouseleave)="closeMenu(5)">
+            <p-slideMenu #menuShop [model]="listItemNavShop" [popup]="false" [viewportHeight]="250" [menuWidth]="175"
+            ></p-slideMenu>
+        </div>
+        <div class="list-nav-menu-outLetStore" *ngIf="isToggleOutLetStore" (mouseleave)="closeMenu(6)">
+            <p-slideMenu #menuOutLetStore [model]="listItemNavOutLetStore" [popup]="false" [viewportHeight]="250" [menuWidth]="175"
+            ></p-slideMenu>
+        </div>
+    </div>
+    <div class="banner">
+        <p-carousel
+        [value]="products"
+        styleClass="custom-carousel"
+        [numVisible]="1"
+        [numScroll]="1"
+        [circular]="true"
+        [autoplayInterval]="3000"
+        [responsiveOptions]="responsiveOptions"
+        >
+        <ng-template pTemplate="header"></ng-template>
+        <ng-template let-product pTemplate="item">
+            <div class="product">
+                <img [src]="product.src" width="100%" height="100%" alt="">
+            </div>
+        </ng-template>
+        </p-carousel>
+    </div>
+    <div class="block-search" *ngIf="isVisiableBlockSearch">
+        <div class="block-input-search">
+            <input type="text" class="input-search" placeholder="Tìm kiếm">
+            <i class="fa-solid fa-magnifying-glass icon-search"></i>
+            <i class="fa-solid fa-xmark icon-exit" (click)="isVisiableBlockSearch = false"></i>
+        </div>
+        <div class="block-suggest-product">
+            <div class="block-suggest">
+                <h5>Gợi ý nhanh</h5>
+                <div class="suggest-search">
+                    <i class="fa-solid fa-magnifying-glass icon-search-suggest"></i>
+                    <span class="text-suggest-search">Áo sơ mi</span>
+                </div>
+                <div class="suggest-search">
+                    <i class="fa-solid fa-magnifying-glass icon-search-suggest"></i>
+                    <span class="text-suggest-search">Áo polo</span>
+                </div>
+                <hr class="line-search">
+                <div class="block-product-oustanding">
+                    <p class="text-outstanding">Sản phẩm nổi bật</p>
+                    <div class="list-product-outstanding">
+                        <div class="item-outstanding">
+                            <img src="assets/banner.jpg" width="13%" height="100%" alt="">
+                            <div class="detail-product-outstanding">
+                                <p class="product-name-outstanding">Áo polo nam Aristino APS018S1</p>
+                                <p class="price-product-outstanding">330.000đ</p>
+                            </div>
+                        </div>
+                        <div class="item-outstanding">
+                            <img src="assets/banner.jpg" width="13%" height="100%" alt="">
+                            <div class="detail-product-outstanding">
+                                <p class="product-name-outstanding">Áo polo nam Aristino APS018S1</p>
+                                <p class="price-product-outstanding">330.000đ</p>
+                            </div>
+                        </div>
+                        <div class="item-outstanding">
+                            <img src="assets/banner.jpg" width="13%" height="100%" alt="">
+                            <div class="detail-product-outstanding">
+                                <p class="product-name-outstanding">Áo polo nam Aristino APS018S1</p>
+                                <p class="price-product-outstanding">330.000đ</p>
+                            </div>
+                        </div>
+                        <div class="item-outstanding">
+                            <img src="assets/banner.jpg" width="13%" height="100%" alt="">
+                            <div class="detail-product-outstanding">
+                                <p class="product-name-outstanding">Áo polo nam Aristino APS018S1</p>
+                                <p class="price-product-outstanding">330.000đ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- <div class="header-banner" style="display: flex; width: fit-content; height: fit-content;">
-        <img src="
-        https://file.hstatic.net/1000351433/file/1920_x_1200_90f6ea77fdc8419e8c18321ac3ecea7d.jpg"
-            style="max-width: 100%; max-height: 100%;">
-    </div> -->
-</header>
-<router-outlet></router-outlet>
+</section>

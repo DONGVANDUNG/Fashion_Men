@@ -30,7 +30,8 @@ import { MessagesModule } from "primeng/messages";
 import { AppUserOrderModule } from "./app/app-user-view/app-user-order/app-user-order.module";
 import { AppAdminManagementOrdertModule } from "./app/app-admin-view/app-admin-management-order/app-admin-management-order.component.module";
 import { DashboardModule } from "./app/app-admin-view/dashboard/dashboard.component.module";
-
+import { SidebarModule } from 'primeng/sidebar';
+import {CarouselModule} from 'primeng/carousel';
 @NgModule({
   declarations: [AppAdminMenuComponent],
   imports: [
@@ -71,6 +72,8 @@ import { DashboardModule } from "./app/app-admin-view/dashboard/dashboard.compon
     FieldsetModule,
     DialogModule,
     AppUserOrderModule,
+    SidebarModule,
+    CarouselModule,
     RadioButtonModule],
 
 }) 
