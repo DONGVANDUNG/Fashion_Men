@@ -85,4 +85,175 @@
     <span href="" class="text-secondary">Home</span>
     <span>&nbsp;&nbsp;/&nbsp;&nbsp;</span>
     <span href="" class="text-link-cart">Giỏ hàng</span> 
+    <div class="block-product-cart">
+        <div class="cart-empty" *ngIf="false">
+            <i class="fa-solid fa-cart-shopping icon-cart-empty"></i>
+            <p>Giỏ hàng của bạn chưa có sản phẩm</p>
+            <a class="back-home" href="/home">Chọn ngay sản phẩm</a>
+        </div>
+        <div class="cart-content" *ngIf="true">
+            <div class="product">
+                <div class="header-block">
+                    <h3>Giỏ hàng của bạn (3)</h3>
+                    <a class="back-home" href="/home">Chọn ngay sản phẩm</a>
+                </div>
+                <hr>
+                <div class="detail-product">
+                    <img src="assets/banner.jpg" class="image-product" width="20%" alt="">
+                    <div class="detail-content-product">
+                        <p><strong>Áo polo nam ngắn tay FashionMen APS1543</strong></p>
+                        <p class="color-product">Be 2 &nbsp;&nbsp;/&nbsp;&nbsp;XL</p>
+                        <div class="block-control-quantity d-flex">
+                            <div class="block-decrease"><i class="fa-solid fa-minus"></i></div>
+                            <div class="block-quantity">1</div>
+                            <div class="block-increase"><i class="fa-solid fa-plus"></i></div>
+                        </div>
+                        <p (click)="deleteProductOutCart()" class="btn-delete-product">Xóa</p>
+                    </div>
+                    <div class="price-product">
+                        <p>490.000đ</p>
+                        <span>690.000đ</span>
+                    </div>
+                    <div class="block-favourite">
+                        <i class="fa-regular fa-heart" *ngIf="!isFavourite" (click)="addOrDeleteFavourite()"></i>
+                        <i class="fa-solid fa-heart" *ngIf="isFavourite" (click)="addOrDeleteFavourite()"></i>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="block-order-cart">
+                <div class="block-order-cart_price d-flex justify-content-between">
+                    <p><strong>Tạm tính</strong></p>
+                    <p class="price-order"><strong>499.000đ</strong></p>
+                </div>
+                <div class="note_footer">
+                    <p><strong>Miễn phí</strong> vận chuyển cho đơn hàng từ <strong>500k</strong></p>
+                    <i class="fa-solid fa-circle-info"></i>
+                </div>
+                <div class="btn_buy_now">Tiến hành đặt hàng(1)</div>
+                <p><strong>Ưu đãi hội viên</strong></p>
+                <p>Tích điểm đổi quà và rất nhiều ưu đãi đặc biệt khác, chỉ dành cho hội viên của Aristino.</p>
+                <p>
+                    <a class="btn-login" (click)="sidebarLoginVisible = true">Đăng nhập</a> 
+                    /
+                    <a class="btn-register" (click)="sidebarRegisterVisible = true">Đăng ký hội viên</a>
+                </p>
+            </div>
+        </div>
+        <div class="sidebar-login">
+            <p-sidebar [(visible)]="sidebarLoginVisible" position="right">
+                <div class="block-login">
+                    <h3>Đăng nhập</h3>
+                    <input type="text" class="input-phone" placeholder="Nhập số điện thoại">
+                    <!-- <span class="validate-error"></span> -->
+                    <button class="button-login">ĐĂNG NHẬP</button>
+                    <div class="btn-login-group">
+                        <div class="btn-login-google">
+                            <img class="login-social" src="assets/layout/images/image-login-google.svg" alt="">
+                            <span>Google</span>
+                        </div>
+                        <div class="btn-login-facebook">
+                            <img class="login-social" src="assets/layout/images/image-login-facebook.svg" alt="">
+                            <span>Facebook</span>
+                        </div>
+                    </div>
+                    <p style="color: gray;">Hoặc đăng nhập bằng</p>
+                    <p>Bạn chưa có tài khoản? <a (click)="sidebarRegisterVisible = true" (click)="sidebarLoginVisible = false" class="text-primary text-decoration-none text-link">Đăng ký</a></p>
+                </div>
+            </p-sidebar>
+        </div>
+        <div class="sidebar-register">
+            <p-sidebar [(visible)]="sidebarRegisterVisible" position="right">
+                    <div class="block-register">
+                        <h3>ĐĂNG KÝ TÀI KHOẢN</h3>
+                        <input type="text" class="input-name" placeholder="Họ và tên*">
+                        <input type="text" class="input-phone" placeholder="Số điện thoại*">
+                        <input type="text" class="input-email" placeholder="Nhập email để nhận ưu đãi">
+                        <!-- <span class="validate-error"></span> -->
+                        <button class="button-login">Đăng ký</button>
+                        <p>Chọn Đăng ký để xác nhận rằng quý khách đã đọc Chính sách bảo mật và chia sẻ thông tin của Fashion Men</p>
+                        <div class="btn-login-group">
+                            <div class="btn-login-google">
+                                <img class="login-social" src="assets/layout/images/image-login-google.svg" alt="">
+                                <span>Google</span>
+                            </div>
+                            <div class="btn-login-facebook">
+                                <img class="login-social" src="assets/layout/images/image-login-facebook.svg" alt="">
+                                <span>Facebook</span>
+                            </div>
+                        </div>
+                        <p style="color: gray;">Hoặc đăng nhập bằng</p>
+                        <p>Bạn đã có tài khoản? <a (click)="sidebarLoginVisible = true" (click)="sidebarRegisterVisible = false" class="text-link text-primary text-decoration-none">Đăng nhập</a></p>
+                    </div>
+            </p-sidebar>
+        </div>
+    </div>
+    <div class="suggest-product mb-4">
+        <p-tabMenu [model]="items" [activeItem]="activeItem" (activeItemChange)="onActiveItemChange($event)"></p-tabMenu>
+    </div>
+    <div class="list-product-suggest">
+        <div class="list-product-suggest_item_favourite" *ngIf="isTabFavourite">
+            <p-carousel
+            [value]="products"
+            styleClass="custom-carousel"
+            [numVisible]="4"
+            [numScroll]="1"
+            [circular]="true"
+            [autoplayInterval]="3000"
+            [responsiveOptions]="responsiveOptions"
+            >
+            <ng-template pTemplate="header"></ng-template>
+            <ng-template let-product pTemplate="item">
+                <div class="product">
+                    <img [src]="product.src" width="210px" height="210px" alt="">
+                </div>
+            </ng-template>
+            </p-carousel>
+        </div>
+        <div class="list-product-suggest_item_viewed" *ngIf="!isTabFavourite">
+            <!-- <p-carousel
+            [value]="products"
+            styleClass="custom-carousel"
+            [numVisible]="4"
+            [numScroll]="1"
+            [circular]="true"
+            [autoplayInterval]="3000"
+            [responsiveOptions]="responsiveOptions"
+            >
+            <ng-template pTemplate="header"></ng-template>
+            <ng-template let-product pTemplate="item">
+                <div class="product">
+                    <img [src]="product.src" width="210px" height="210px" alt="">
+                </div>
+            </ng-template>
+            </p-carousel> -->
+        </div>
+    </div>
+    <div class="information-group-box">
+        <div class="row">
+            <div class="col-4">
+                <div class="information-group-box_item">
+                    <i class="fa-solid fa-truck icon-box-item"></i>
+                    <h6 class="text-dark"><strong>MIỄN PHÍ VẬN CHUYỂN</strong></h6>
+                    <span>Miễn phí vận chuyển cho đơn hàng từ 500K</span>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="information-group-box_item">
+                    <i class="fa-solid fa-shuffle icon-box-item"></i>
+                    <h6 class="text-dark"><strong>ĐỔI HÀNG DỄ DÀNG</strong></h6>
+                    <span>Đổi sản phẩm trong vòng 30 ngày</span>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="information-group-box_item">
+                    <i class="fa-regular fa-credit-card icon-box-item"></i>
+                    <h6 class="text-dark"><strong>THANH TOÁN COD TIỆN LỢI</strong></h6>
+                    <span>Nhận hàng không đồng kiểm</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<hr>
+<app-footer></app-footer>

@@ -33,6 +33,8 @@ import { DashboardModule } from "./app/app-admin-view/dashboard/dashboard.compon
 import { SidebarModule } from 'primeng/sidebar';
 import {CarouselModule} from 'primeng/carousel';
 import { StepsModule } from 'primeng/steps';
+import { TabMenuModule } from 'primeng/tabmenu';
+
 @NgModule({
   declarations: [AppAdminMenuComponent],
   imports: [
@@ -76,6 +78,7 @@ import { StepsModule } from 'primeng/steps';
     SidebarModule,
     CarouselModule,
     StepsModule,
+    TabMenuModule,
     RadioButtonModule],
 
 }) 

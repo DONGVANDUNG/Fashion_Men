@@ -115,7 +115,7 @@ export class AppHeaderComponent {
    
    responsiveOptions;
  
-   constructor() { 
+   constructor(private router: Router,) { 
      this.responsiveOptions = [
             {
               breakpoint: '1166px',
@@ -203,5 +203,8 @@ export class AppHeaderComponent {
   }
   closeBlockAuth(){
     this.isToggleAuth = false;
+  }
+  redirectCart(){
+    this.router.navigate(['cart']);
   }
 }
