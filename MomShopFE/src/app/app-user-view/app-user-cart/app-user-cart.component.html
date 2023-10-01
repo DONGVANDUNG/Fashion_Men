@@ -199,13 +199,12 @@
             [numVisible]="4"
             [numScroll]="1"
             [circular]="true"
-            [autoplayInterval]="3000"
             [responsiveOptions]="responsiveOptions"
             >
             <ng-template pTemplate="header"></ng-template>
             <ng-template let-product pTemplate="item">
                 <div class="product">
-                    <img [src]="product.src" width="210px" height="210px" alt="">
+                    <img [src]="product.src" width="250px" height="270px" alt="">
                 </div>
             </ng-template>
             </p-carousel>

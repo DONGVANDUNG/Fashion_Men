@@ -397,5 +397,14 @@
         .p-sidebar-header{
             padding:0
         }
+        .p-carousel-prev{
+            position: absolute;
+            z-index: 2;
+        }
+        .p-icon-wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 }
 
